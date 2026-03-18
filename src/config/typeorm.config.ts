@@ -5,11 +5,13 @@ export const getTypeOrmConfig = (
   config: ConfigService,
 ): TypeOrmModuleOptions => ({
   type: 'postgres',
-  host: config.get<string>('DB_HOST'),
-  port: parseInt(config.get<string>('DB_PORT') || '5432', 10),
-  username: config.get<string>('DB_USERNAME'),
-  password: config.get<string>('DB_PASSWORD'),
-  database: config.get<string>('DB_NAME'),
+
+  // ✅ DÙNG DATABASE_URL
+  url: config.get<string>('DATABASE_URL'),
+
   autoLoadEntities: true,
   synchronize: false,
+  // 🔥 tránh crash khi DB chưa ready
+  retryAttempts: 10,
+  retryDelay: 3000,
 });

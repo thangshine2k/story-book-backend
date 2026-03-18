@@ -25,6 +25,7 @@ export class ChapterService {
         this.configService.get<string>('REDIS_PORT') || '6379',
         10,
       ),
+      password: this.configService.get<string>('REDIS_PASSWORD'), // thêm password
     });
   }
 

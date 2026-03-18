@@ -5,15 +5,15 @@ export class Chapter {
   @PrimaryGeneratedColumn()
   id!: number;
 
-  @Column()
+  @Column({ name: 'story_id' })
   storyId!: number;
 
-  @Column()
+  @Column({ name: 'chapter_number' })
   chapterNumber!: number;
 
   @Column()
   title!: string;
 
-  @Column()
-  contentUrl!: string; // link R2
+  @Column({ name: 'content_url' })
+  contentUrl!: string;
 }
