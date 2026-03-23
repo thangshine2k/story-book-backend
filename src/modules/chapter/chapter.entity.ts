@@ -1,4 +1,5 @@
-import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
+import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Story } from '../story/story.entity';
 
 @Entity()
 export class Chapter {
@@ -16,4 +17,8 @@ export class Chapter {
 
   @Column({ name: 'content_url' })
   contentUrl!: string;
+
+  // 👇 thêm
+  @ManyToOne(() => Story, (story) => story.chapters)
+  story!: Story;
 }
