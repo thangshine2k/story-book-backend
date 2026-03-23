@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  ManyToOne,
+  JoinColumn,
+} from 'typeorm';
 import { Story } from '../story/story.entity';
 
 @Entity()
@@ -20,5 +26,6 @@ export class Chapter {
 
   // 👇 thêm
   @ManyToOne(() => Story, (story) => story.chapters)
+  @JoinColumn({ name: 'story_id' }) // 👈 fix tên cột join
   story!: Story;
 }
