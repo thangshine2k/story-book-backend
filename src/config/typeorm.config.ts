@@ -10,7 +10,7 @@ export const getTypeOrmConfig = (
   url: config.get<string>('DATABASE_URL'),
 
   autoLoadEntities: true,
-  synchronize: true,
+  synchronize: false,
   // 🔥 tránh crash khi DB chưa ready
   retryAttempts: 10,
   retryDelay: 3000,
